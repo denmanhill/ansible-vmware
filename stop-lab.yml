@@ -1,1 +1,21 @@
-
+---
+- name: Shutdown Lab
+  hosts: Home Lab
+  connection: local
+  vars:
+    vcenter_hostname: 192.168.2.10
+    vcenter_username: administrator@vsphere.local
+    vcenter_password: TiffanyDenman2010
+    esxi_hostname: 192.168.2.11
+    
+  tasks:
+    - name: Enter VSAN-Compliant Maintenance Mode
+    vmware_maintenancemode:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      esxi_hostname: "{{ esxi_hostname }}"
+      evacuate: yes
+      timeout: 3600
+      state: present
+  delegate_to: localhost
