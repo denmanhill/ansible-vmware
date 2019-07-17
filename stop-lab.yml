@@ -18,3 +18,4 @@
       evacuate: yes
       timeout: 3600
       state: present
+      validate_certs: false
