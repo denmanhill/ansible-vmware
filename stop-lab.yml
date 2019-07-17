@@ -1,6 +1,5 @@
 ---
-- name: Shutdown Lab
-  hosts: VMs
+- hosts: VMs
   connection: local
   vars:
     vcenter_hostname: 192.168.2.10
@@ -9,7 +8,7 @@
     esxi_hostname: 192.168.2.11
   
   tasks:
-    - name: Enter Maintenance Mode
+    - name: Shutdown VMs
     vmware_guest_powerstate :
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
