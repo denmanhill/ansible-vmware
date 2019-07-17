@@ -1,6 +1,6 @@
 ---
 - name: Shutdown Lab
-  hosts: Home Lab
+  hosts: "Home Lab"
   connection: local
   vars:
     vcenter_hostname: 192.168.2.10
