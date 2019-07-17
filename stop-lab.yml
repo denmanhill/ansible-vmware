@@ -17,7 +17,7 @@
       state: powered-off
       validate_certs: false
   
-- hosts: hosts
+- hosts: Hosts
   connection: local
   vars:
     vcenter_hostname: 192.168.2.10
