@@ -1,5 +1,5 @@
 ---
-- hosts: VMs
+- hosts: NestedVMs
   connection: local
   vars:
     vcenter_hostname: 192.168.2.10
@@ -8,7 +8,7 @@
     esxi_hostname: 192.168.2.11
   
   tasks:
-  - name: Shutdown VMs
+  - name: Shutdown Nested VMs
     vmware_guest_powerstate :
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
@@ -35,4 +35,22 @@
       evacuate: yes
       timeout: 3600
       state: present
+      validate_certs: false
+
+- hosts: VMs
+  connection: local
+  vars:
+    vcenter_hostname: 192.168.2.5
+    vcenter_username: root
+    vcenter_password: TiffanyDenman2010
+    esxi_hostname: 192.168.2.11
+  
+  tasks:
+  - name: Shutdown Nested VMs
+    vmware_guest_powerstate :
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      name: "{{ inventory_hostname }}"
+      state: shutdown-guest
       validate_certs: false
