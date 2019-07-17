@@ -8,7 +8,7 @@
     esxi_hostname: 192.168.2.11
   
   tasks:
-    - name: Shutdown VMs
+  - name: Shutdown VMs
     vmware_guest_powerstate :
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
@@ -27,7 +27,7 @@
     esxi_hostname: 192.168.2.11
     
   tasks:
-    - name: Enter Maintenance Mode
+  - name: Enter Maintenance Mode
     vmware_maintenancemode:
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
