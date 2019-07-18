@@ -3,16 +3,13 @@
   connection: local
   vars:
     vcenter_hostname: 192.168.2.5
-    vcenter_username: root
-    vcenter_password: TiffanyDenman2010
-    esxi_hostname: 192.168.2.11
   
   tasks:
   - name: Start VMs
     vmware_guest_powerstate :
       hostname: "{{ vcenter_hostname }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
+      username: "{{ ESXi_USERNAME }}"
+      password: "{{ ESXi_PASSWORD }}"
       name: "{{ inventory_hostname }}"
       state: powered-on
       validate_certs: false
@@ -23,15 +20,13 @@
   connection: local
   vars:
     vcenter_hostname: 192.168.2.10
-    vcenter_username: administrator@vsphere.local
-    vcenter_password: TiffanyDenman2010!
     
   tasks:
   - name: Exit Maintenance Mode
     vmware_maintenancemode:
       hostname: "{{ vcenter_hostname }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
       esxi_hostname: "{{ inventory_hostname }}"
       evacuate: yes
       timeout: 3600
@@ -42,16 +37,13 @@
   connection: local
   vars:
     vcenter_hostname: 192.168.2.10
-    vcenter_username: administrator@vsphere.local
-    vcenter_password: TiffanyDenman2010!
-    esxi_hostname: 192.168.2.11
   
   tasks:
   - name: Start Nested VMs
     vmware_guest_powerstate :
       hostname: "{{ vcenter_hostname }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
       name: "{{ inventory_hostname }}"
       state: powered-on
       validate_certs: false
