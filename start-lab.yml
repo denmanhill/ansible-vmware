@@ -17,7 +17,7 @@
       state: powered-on
       validate_certs: false
   - pause:
-    minutes: 5
+      minutes: 5
       
 - hosts: Hosts
   connection: local
