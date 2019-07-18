@@ -2,8 +2,6 @@
 - hosts: NestedVMs
   connection: local
   vars:
-    vcenter_hostname: 192.168.2.10
-  
   tasks:
   - name: Shutdown Nested VMs
     vmware_guest_powerstate :
@@ -17,8 +15,6 @@
 - hosts: Hosts
   connection: local
   vars:
-    vcenter_hostname: 192.168.2.10
-    
   tasks:
   - name: Enter Maintenance Mode
     vmware_maintenancemode:
@@ -34,12 +30,10 @@
 - hosts: VMs
   connection: local
   vars:
-    vcenter_hostname: 192.168.2.5
-  
   tasks:
   - name: Shutdown Nested VMs
     vmware_guest_powerstate :
-      hostname: "{{ vcenter_hostname }}"
+      hostname: "{{ esxi_hostname }}"
       username: "{{ ESXi_USERNAME }}"
       password: "{{ ESXi_PASSWORD}}"
       name: "{{ inventory_hostname }}"
