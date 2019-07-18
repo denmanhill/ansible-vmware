@@ -38,7 +38,7 @@
       hostname: "{{ vcenter_hostname }}"
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
-      new_name: "{{ inventory_hostname }}"
+      name: "{{ inventory_hostname }}"
       state: powered-on
       validate_certs: false
   
