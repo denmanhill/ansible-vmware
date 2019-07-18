@@ -35,15 +35,13 @@
   connection: local
   vars:
     vcenter_hostname: 192.168.2.5
-    vcenter_username: root
-    vcenter_password: TiffanyDenman2010
   
   tasks:
   - name: Shutdown Nested VMs
     vmware_guest_powerstate :
       hostname: "{{ vcenter_hostname }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
+      username: "{{ ESXi_USERNAME }}"
+      password: "{{ ESXi_PASSWORD}}"
       name: "{{ inventory_hostname }}"
       state: shutdown-guest
       validate_certs: false
