@@ -25,7 +25,6 @@
     vcenter_hostname: 192.168.2.10
     vcenter_username: administrator@vsphere.local
     vcenter_password: TiffanyDenman2010!
-    esxi_hostname: 192.168.2.11
     
   tasks:
   - name: Exit Maintenance Mode
