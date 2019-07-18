@@ -5,7 +5,7 @@
   tasks:
   - name: Start VMs
     vmware_guest_powerstate :
-      hostname: "{{ vcenter_hostname }}"
+      hostname: "{{ esxi_hostname}}"
       username: "{{ ESXi_USERNAME }}"
       password: "{{ ESXi_PASSWORD }}"
       name: "{{ inventory_hostname }}"
@@ -35,7 +35,7 @@
   tasks:
   - name: Start Nested VMs
     vmware_guest_powerstate :
-      hostname: "{{ esxi_hostname }}"
+      hostname: "{{ vcenter_hostname }}"
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
       name: "{{ inventory_hostname }}"
