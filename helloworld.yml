@@ -4,13 +4,22 @@
   connection: local
   tasks:
   - name: Collect facts
+    vmware_cluster_facts:
+      hostname: 192.168.2.10
+      username: administrator@vsphere.local
+      password: TiffanyDenman2010!
+      validate_certs: false
+      cluster_name: CLUSTER01
+    register: cluster_facts
+  - name: Collect facts
     vmware_host_facts:
       hostname: 192.168.2.10
       username: administrator@vsphere.local
       password: TiffanyDenman2010!
       validate_certs: false
-    register: cluster_facts
+    register: host_facts
   
   - name: Write debug
     debug:
       msg: "{{ cluster_facts }}"
+      msg: "{{ host_facts }}"
