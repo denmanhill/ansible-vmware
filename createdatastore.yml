@@ -1,0 +1,15 @@
+---
+- hosts: Hosts
+  connection: local
+  tasks:
+  - name: Create Datastore
+    vmware_host_datastore:
+      hostname: '{{ vcenter_hostname }}'
+      username: '{{ vcenter_username }}'
+      password: '{{ vcenter_password }}'
+      datastore_name: "{{ datastore_name }}"
+      datastore_type: "{{ datastore_type }}"
+      vmfs_device_name: "{{ deviceID }}"
+      vmfs_version: 6
+      state: present
+      validate_certs: false
