@@ -2,5 +2,6 @@
 - hosts: VMs
   connection: local
   tasks:
-  - name: Test
-    debug: "Test message"
+  - name: Write debug
+    debug:
+      msg: Test message
