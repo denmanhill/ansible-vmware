@@ -1,0 +1,6 @@
+---
+- hosts: VMs
+  connection: local
+  tasks:
+  - name: Test
+    debug: "Test message"
