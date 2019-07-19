@@ -2,6 +2,13 @@
 - hosts: Hosts
   connection: local
   tasks:
+  - name: Collect facts
+    vmware_cluster_facts:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      cluster_name: "{{ inventory_hostname }}"
+      validate_certs: false
   - name: Create Datastore
     vmware_host_datastore:
       hostname: "{{ vcenter_hostname }}"
@@ -13,4 +20,5 @@
       vmfs_device_name: "{{ deviceID }}"
       vmfs_version: 6
       state: present
-      validate_certs: false
+      validate_certs: false      
+      
