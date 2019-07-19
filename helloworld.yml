@@ -4,11 +4,10 @@
   connection: local
   tasks:
   - name: Collect facts
-    vmware_cluster_facts:
+    vmware_host_facts:
       hostname: 192.168.2.10
       username: administrator@vsphere.local
       password: TiffanyDenman2010!
-      cluster_name: CLUSTER01
       validate_certs: false
     register: cluster_facts
   
