@@ -1,7 +1,7 @@
 ---
-- hosts: all
+- hosts: AnisbleHosts[0]
   connection: local
   tasks:
   - name: Write debug
     debug:
-      msg: Test message
+      msg: "{{ inventory_hostname }}"
