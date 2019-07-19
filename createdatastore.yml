@@ -9,6 +9,8 @@
       password: "{{ vcenter_password }}"
       cluster_name: "{{ inventory_hostname }}"
       validate_certs: false
+    register: cluster_facts
+    
   - name: Create Datastore
     vmware_host_datastore:
       hostname: "{{ vcenter_hostname }}"
