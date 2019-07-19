@@ -1,5 +1,6 @@
 ---
-- connection: local
+- hosts: all
+  connection: local
   tasks:
   - name: Write debug
     debug:
