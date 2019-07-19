@@ -1,5 +1,5 @@
 ---
-- hosts: AnisbleHosts[0]
+- hosts: AnsibleHosts[0]
   connection: local
   tasks:
   - name: Write debug
