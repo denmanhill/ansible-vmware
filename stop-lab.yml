@@ -12,7 +12,7 @@
       state: powered-off
       validate_certs: false
   
-- hosts: Hosts
+- hosts: ESXiHosts
   connection: local
   vars:
   tasks:
