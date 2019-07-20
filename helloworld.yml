@@ -23,4 +23,4 @@
   - name: Write debug
     debug:
       msg: "{{ cluster_facts }}"
-      msg: "{{ host_facts }}"
+
