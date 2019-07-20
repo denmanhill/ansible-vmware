@@ -15,7 +15,7 @@
   - pause:
       minutes: 5
       
-- hosts: Hosts
+- hosts: ESXiHosts
   gather_facts: no
   connection: local
   vars:
