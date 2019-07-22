@@ -5,8 +5,8 @@
   - name: Create Datastore
     vmware_host_datastore:
       hostname: "{{ vcenter_hostname }}"
-      username: "{{ VCC_username }}"
-      password: "{{ VCC_password }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD  }}"
       esxi_hostname: "{{ inventory_hostname }}"
       datastore_name: "{{ datastore_name }}"
       datastore_type: "{{ datastore_type }}"
