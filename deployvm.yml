@@ -6,23 +6,23 @@
   tasks:
   - name: Deploy from template
     vmware_guest :
-      hostname: "{{ esxi_hostname}}"
-      username: "{{ ESXi_USERNAME }}"
-      password: "{{ ESXi_PASSWORD }}"
+      hostname: 192.168.2.10
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
       name: "{{ vmname }}"
-      guest_id
-      folder
-      template
-      cluster
+      guest_id: centos64Guest
+      folder: /Lancaster Close/vm/
+      template: LinuxTemplate
+      cluster: CLUSTER01
       disk:
-      - size_gb: 10
+      - size_gb: 1
         type: thin
-        datastore: datastore1
+        datastore: SF-VOL01
       hardware:
         memory_mb: 512
         num_cpus: 1
         scsi: paravirtual
-      wait_for_ip_address
+      wait_for_ip_address: no
       state: powered-on
       validate_certs: false
   register: deploy_vm
