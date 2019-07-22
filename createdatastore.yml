@@ -1,16 +1,7 @@
 ---
-- hosts: Hosts
+- hosts: Hosts[0]
   connection: local
   tasks:
-  - name: Collect facts
-    vmware_cluster_facts:
-      hostname: "{{ vcenter_hostname }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
-      cluster_name: "{{ inventory_hostname }}"
-      validate_certs: false
-    register: cluster_facts
-    
   - name: Create Datastore
     vmware_host_datastore:
       hostname: "{{ vcenter_hostname }}"
