@@ -1,0 +1,30 @@
+---
+- hosts: ESXiHosts
+  gather_facts: no
+  connection: local
+  vars:
+  tasks:
+  - name: Deploy from template
+    vmware_guest :
+      hostname: "{{ esxi_hostname}}"
+      username: "{{ ESXi_USERNAME }}"
+      password: "{{ ESXi_PASSWORD }}"
+      name: "{{ vmname }}"
+      guest_id
+      folder
+      template
+      cluster
+      disk:
+      - size_gb: 10
+        type: thin
+        datastore: datastore1
+      hardware:
+        memory_mb: 512
+        num_cpus: 1
+        scsi: paravirtual
+      wait_for_ip_address
+      state: powered-on
+      validate_certs: false
+  register: deploy_vm
+  - pause:
+      minutes: 5
