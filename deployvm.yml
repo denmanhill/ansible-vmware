@@ -26,5 +26,3 @@
       state: powered-on
       validate_certs: false
   register: deploy_vm
-  - pause:
-      minutes: 5
