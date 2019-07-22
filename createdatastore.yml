@@ -1,5 +1,5 @@
 ---
-- hosts: Hosts[0]
+- hosts: ESXiHosts[0]
   connection: local
   tasks:
   - name: Create Datastore
