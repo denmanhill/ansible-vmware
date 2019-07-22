@@ -1,5 +1,5 @@
 ---
-- hosts: ESXiHosts
+- hosts: ESXiHosts[0]
   gather_facts: no
   connection: local
   vars:
@@ -23,5 +23,5 @@
         num_cpus: 1
         scsi: paravirtual
       wait_for_ip_address: no
-      state: powered-on
+      state: poweredon
       validate_certs: false
