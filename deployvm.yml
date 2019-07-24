@@ -9,6 +9,7 @@
       hostname: 192.168.1.10
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
+      datacenter: "{{ vmdatacenter }}"
       name: "{{ vmname }}"
       guest_id: centos64Guest
       folder: /Lancaster/vm/
