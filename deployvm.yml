@@ -11,7 +11,7 @@
       password: "{{ VCC_PASSWORD }}"
       name: "{{ vmname }}"
       guest_id: centos64Guest
-      folder: /Lancastere/vm/
+      folder: /Lancaster/vm/
       template: centostemplate
       cluster: "{{ vmcluster }}"
       disk:
