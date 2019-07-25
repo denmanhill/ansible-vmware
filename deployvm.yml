@@ -12,6 +12,7 @@
       datacenter: "{{ vmdatacenter }}"
       name: "{{ vmname }}"
       guest_id: centos7_64Guest
+      guest_id: "{{ 'centos7_64Guest' if templatelabel == 'Centos' else 'genericLinuxGuest' if templatelabel == 'TinyVM' else 'windowstemplate' if templatelabel == 'Windows' }}"
       folder: /Lancaster/vm/
       template: "{{ 'centostemplate' if templatelabel == 'Centos' else 'tinyvmtemplate' if templatelabel == 'TinyVM' else 'windowstemplate' if templatelabel == 'Windows' }}"
       cluster: "{{ vmcluster }}"
