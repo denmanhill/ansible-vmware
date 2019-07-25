@@ -21,6 +21,8 @@
         memory_mb: "{{ vmmemory }}"
         num_cpus: "{{ vmcpu }}"
         scsi: paravirtual
+      networks:
+        - name: 192.168.2.0
       wait_for_ip_address: yes
       state: poweredon
       validate_certs: false
