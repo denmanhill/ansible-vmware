@@ -24,6 +24,7 @@
         scsi: paravirtual
       networks:
         - name: "{{ vmnetwork }}"
+          start_connected: yes
       wait_for_ip_address: yes
       state: poweredon
       validate_certs: false
