@@ -15,8 +15,8 @@
       folder: /Lancaster/vm/
       template: "{{ 'centostemplate' if templatelabel == 'Centos' else 'tinyvmtemplate' if templatelabel == 'TinyVM' else 'windowstemplate' if templatelabel == 'Windows' }}"
       cluster: "{{ vmcluster }}"
-      customization: "{{ vmname }}"
-        hostname: 
+      customization: 
+        hostname: "{{ vmname }}"
       hardware:
         memory_mb: "{{ vmmemory }}"
         num_cpus: "{{ vmcpu }}"
