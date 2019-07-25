@@ -25,7 +25,7 @@
       networks:
         - name: "{{ vmnetwork }}"
           start_connected: yes
-      wait_for_ip_address: yes
+      wait_for_ip_address: no
       state: poweredon
       validate_certs: false
       wait_for_customization: yes
