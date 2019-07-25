@@ -13,9 +13,10 @@
       name: "{{ vmname }}"
       guest_id: centos64Guest
       folder: /Lancaster/vm/
-      template: centostemplate
       template: "{{ 'centostemplate' if templatelabel == 'Centos' else 'tinyvmtemplate' if templatelabel == 'TinyVM' else 'windowstemplate' if templatelabel == 'Windows' }}"
       cluster: "{{ vmcluster }}"
+      customization: "{{ vmname }}"
+        hostname: 
       hardware:
         memory_mb: "{{ vmmemory }}"
         num_cpus: "{{ vmcpu }}"
