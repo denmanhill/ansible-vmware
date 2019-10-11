@@ -17,6 +17,7 @@
       cluster: "{{ vmcluster }}"
       customization: 
         hostname: "{{ vmname }}"
+        password: TiffanyDenman2010
       hardware:
         memory_mb: "{{ vmmemory }}"
         num_cpus: "{{ vmcpu }}"
