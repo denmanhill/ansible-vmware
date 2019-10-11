@@ -24,6 +24,7 @@
         scsi: paravirtual
       networks:
         - name: "{{ vmnetwork }}"
+          device_type: vmxnet3
           start_connected: yes
       wait_for_ip_address: no
       state: poweredon
