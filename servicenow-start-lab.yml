@@ -1,0 +1,46 @@
+---
+- hosts: VMs
+  gather_facts: no
+  connection: local
+  vars:
+  tasks:
+  - name: Start VMs
+    vmware_guest_powerstate :
+      hostname: "{{ esxi_hostname}}"
+      username: "{{ ESXi_USERNAME }}"
+      password: "{{ ESXi_PASSWORD }}"
+      name: "{{ inventory_hostname }}"
+      state: powered-on
+      validate_certs: false
+  - pause:
+      minutes: 5
+      
+- hosts: ESXiHosts
+  gather_facts: no
+  connection: local
+  vars:
+  tasks:
+  - name: Exit Maintenance Mode
+    vmware_maintenancemode:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
+      esxi_hostname: "{{ inventory_hostname }}"
+      evacuate: yes
+      timeout: 3600
+      state: absent
+      validate_certs: false
+      
+- hosts: NestedVMs
+  gather_facts: no
+  connection: local
+  vars:
+  tasks:
+  - name: Start Nested VMs
+    vmware_guest_powerstate :
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
+      name: "{{ inventory_hostname }}"
+      state: powered-on
+      validate_certs: false
