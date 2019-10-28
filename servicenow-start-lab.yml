@@ -23,7 +23,7 @@
       state: powered-on
       validate_certs: false
   - pause:
-      minutes: 5
+      minutes: 3
   - name: update servicenow request
     snow_record:
       username: "{{ snow_user }}"
