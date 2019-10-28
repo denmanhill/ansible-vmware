@@ -10,6 +10,7 @@
       password: "{{ snow_password }}"
       instance: "{{ snow_instance }}"
       state: present
+      table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
         work_notes: "Started ansible workflow"
@@ -29,6 +30,7 @@
       password: "{{ snow_password }}"
       instance: "{{ snow_instance }}"
       state: present
+      table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
         work_notes: "Started core VMs"
@@ -54,6 +56,7 @@
       password: "{{ snow_password }}"
       instance: "{{ snow_instance }}"
       state: present
+      table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
         work_notes: "Hosts taken out of maintenance mode"
@@ -77,6 +80,7 @@
       password: "{{ snow_password }}"
       instance: "{{ snow_instance }}"
       state: present
+      table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
         work_notes: "Started nested VMs"
