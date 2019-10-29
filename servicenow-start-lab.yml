@@ -13,7 +13,7 @@
       table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
-        work_notes: "Started ansible workflow"
+        work_notes: "Started ansible playbook"
   - name: Start VMs
     vmware_guest_powerstate :
       hostname: "{{ esxi_hostname}}"
@@ -33,7 +33,7 @@
       table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
-        work_notes: "Started core VMs"
+        work_notes: "Started core VM {{ inventory_hostname }}"
       
 - hosts: ESXiHosts
   gather_facts: no
@@ -59,7 +59,7 @@
       table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
-        work_notes: "Hosts taken out of maintenance mode"
+        work_notes: "{{ inventory_hostname }} taken out of maintenance mode"
         
 - hosts: NestedVMs
   gather_facts: no
@@ -83,5 +83,5 @@
       table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
-        work_notes: "Started nested VMs"
+        work_notes: "Started nested VM {{ inventory_hostname }}"
         state: 3
