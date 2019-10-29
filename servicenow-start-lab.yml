@@ -13,7 +13,7 @@
       table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
-        work_notes: "Started ansible playbook"
+        work_notes: "Started core VM {{ inventory_hostname }}"
   - name: Start VMs
     vmware_guest_powerstate :
       hostname: "{{ esxi_hostname}}"
@@ -22,8 +22,12 @@
       name: "{{ inventory_hostname }}"
       state: powered-on
       validate_certs: false
-  - pause:
-      minutes: 3
+
+- hosts: VMs[0]
+  gather_facts: no
+  connection: local
+  vars:
+  tasks:
   - name: update servicenow request
     snow_record:
       username: "{{ snow_user }}"
@@ -33,7 +37,9 @@
       table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
-        work_notes: "Started core VM {{ inventory_hostname }}"
+        work_notes: "Pausing for 3 minutes"
+  - pause:
+      minutes: 3
       
 - hosts: ESXiHosts
   gather_facts: no
@@ -84,4 +90,20 @@
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
         work_notes: "Started nested VM {{ inventory_hostname }}"
+
+- hosts: VMs[0]
+  gather_facts: no
+  connection: local
+  vars:
+  tasks:
+  - name: update servicenow request
+    snow_record:
+      username: "{{ snow_user }}"
+      password: "{{ snow_password }}"
+      instance: "{{ snow_instance }}"
+      state: present
+      table: sc_req_item
+      number: "RITM{{ snow_request.split('REQ')[1] }}"
+      data:
+        work_notes: "Ansible playbook complete"
         state: 3
