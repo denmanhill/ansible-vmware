@@ -53,7 +53,7 @@
       table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
-        work_notes: "{{ debugoutput.stdout }}" 
+        work_notes: "{{ debugoutput.msg }}" 
   
   - name: Close servicenow request
     snow_record:
