@@ -17,6 +17,7 @@
         
   - name: Deploy from template
     vmware_guest :
+      register: debugoutput    
       hostname: "{{ vmvcenter }}"
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
@@ -41,7 +42,16 @@
       state: poweredon
       validate_certs: false
       wait_for_customization: yes
-      register: debugoutput
+
+    snow_record:
+      username: "{{ snow_user }}"
+      password: "{{ snow_password }}"
+      instance: "{{ snow_instance }}"
+      state: present
+      table: sc_req_item
+      number: "RITM{{ snow_request.split('REQ')[1] }}"
+      data:
+        work_notes: "{{ debugoutput.stdout }}" 
       
   - name: update servicenow request
     snow_record:
@@ -52,4 +62,4 @@
       table: sc_req_item
       number: "RITM{{ snow_request.split('REQ')[1] }}"
       data:
-        work_notes: "{{ debugoutput.stdout }}" 
+        work_notes: "Ansible playbook finished" 
