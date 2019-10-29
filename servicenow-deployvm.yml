@@ -17,7 +17,6 @@
         
   - name: Deploy from template
     vmware_guest :
-      
       hostname: "{{ vmvcenter }}"
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
@@ -42,8 +41,8 @@
       state: poweredon
       validate_certs: false
       wait_for_customization: yes
-      register: debugoutput    
-      ignore_errors: True
+    register: debugoutput    
+    ignore_errors: yes
       
   - name: update servicenow request
     snow_record:
