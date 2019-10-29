@@ -4,6 +4,17 @@
   connection: local
   vars:
   tasks:
+  - name: update servicenow request
+    snow_record:
+      username: "{{ snow_user }}"
+      password: "{{ snow_password }}"
+      instance: "{{ snow_instance }}"
+      state: present
+      table: sc_req_item
+      number: "RITM{{ snow_request.split('REQ')[1] }}"
+      data:
+        work_notes: "Started ansible playbook"
+        
   - name: Deploy from template
     vmware_guest :
       hostname: "{{ vmvcenter }}"
@@ -30,3 +41,15 @@
       state: poweredon
       validate_certs: false
       wait_for_customization: yes
+      register: debugoutput
+      
+  - name: update servicenow request
+    snow_record:
+      username: "{{ snow_user }}"
+      password: "{{ snow_password }}"
+      instance: "{{ snow_instance }}"
+      state: present
+      table: sc_req_item
+      number: "RITM{{ snow_request.split('REQ')[1] }}"
+      data:
+        work_notes: {{ debugoutput.stdout }}    
