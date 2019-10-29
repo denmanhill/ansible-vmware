@@ -20,7 +20,7 @@
         password: TiffanyDenman2010
       hardware:
         memory_mb: "{{ vmmemory }}"
-        num_cpus: "{{ vmcpu }}"
+        num_cpus: "{{ vmcpu | int  }}"
         scsi: paravirtual
       networks:
         - name: "{{ vmnetwork }}"
