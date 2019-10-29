@@ -1,0 +1,32 @@
+---
+- hosts: ESXiHosts[0]
+  gather_facts: no
+  connection: local
+  vars:
+  tasks:
+  - name: Deploy from template
+    vmware_guest :
+      hostname: "{{ vmvcenter }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
+      datacenter: "{{ vmdatacenter }}"
+      name: "{{ vmname }}"
+      #guest_id: "{{ 'centos7_64Guest' if templatelabel == 'Centos' else 'centos64Guest' if templatelabel == 'TinyVM' else 'windows9srv-64' if templatelabel == 'Windows' }}"
+      folder: /Lancaster/vm/
+      template: "{{ 'centostemplate' if templatelabel == 'Centos' else 'tinyvmtemplate' if templatelabel == 'TinyVM' else 'windowstemplate' if templatelabel == 'Windows' }}"
+      cluster: "{{ vmcluster }}"
+      customization: 
+        hostname: "{{ vmname }}"
+        password: TiffanyDenman2010
+      hardware:
+        memory_mb: "{{ vmmemory }}"
+        num_cpus: "{{ vmcpu }}"
+        scsi: paravirtual
+      networks:
+        - name: "{{ vmnetwork }}"
+          device_type: vmxnet3
+          start_connected: yes
+      wait_for_ip_address: no
+      state: poweredon
+      validate_certs: false
+      wait_for_customization: yes
