@@ -1,4 +1,20 @@
 ---
+- hosts: VMs[0]
+  gather_facts: no
+  connection: local
+  vars:
+  tasks:
+  - name: update servicenow request
+    snow_record:
+      username: "{{ snow_user }}"
+      password: "{{ snow_password }}"
+      instance: "{{ snow_instance }}"
+      state: present
+      table: sc_req_item
+      number: "RITM{{ snow_request.split('REQ')[1] }}"
+      data:
+        work_notes: "Started ansible playbook"
+        
 - hosts: VMs
   gather_facts: no
   connection: local
