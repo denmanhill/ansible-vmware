@@ -2,7 +2,7 @@
 - hosts: ESXiHosts[0]
   connection: local
   tasks:
-  - name: Gather cluster facts from given datacenter
+  - name: Grab cluster facts
     vmware_cluster_facts:
       hostname: "{{ vmvcenter }}"
       username: "{{ VCC_USERNAME }}"
@@ -13,16 +13,20 @@
 
   - debug: var=cluster_facts_json.clusters
   
-  - name: test loop
+  - name: Loop with_dict
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     debug: msg="{{ item.key }}"
 
 
   
-  - name: Gather cluster facts from given datacenter
+  - name: Grab resource pool facts
     vmware_resource_pool_facts:
       hostname: "{{ vmvcenter }}"
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
       validate_certs: false
     register: rp_facts
+    
+  - name: Loop with_dict
+    with_dict: "{{ rp_facts}}"
+    debug: msg="{{ item.key }}"
