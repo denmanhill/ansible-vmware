@@ -15,7 +15,7 @@
       var: cluster_facts_json
   - name: Print changed parameter
     debug:
-      msg: "{{ cluster_facts_json.changed }}" 
+      msg: "{{ cluster_facts_json.clusters[0].drs_default_vm_behavior }}" 
 
   - name: Gather cluster facts from given datacenter
     vmware_resource_pool_facts:
