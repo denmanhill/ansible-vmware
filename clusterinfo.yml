@@ -9,10 +9,12 @@
       password: "{{ VCC_PASSWORD }}"
       datacenter: "{{ vmdatacenter }}"
       validate_certs: false
-    register: cluster_facts_json | from_json
+    register: cluster_facts_json
 
-  - debug:
-      var: cluster_facts_json
+  - name: Debug Info
+    debug:
+      var: item
+    loop: "{{cluster_facts_json.clusters}}"
   
   - name: Gather cluster facts from given datacenter
     vmware_resource_pool_facts:
