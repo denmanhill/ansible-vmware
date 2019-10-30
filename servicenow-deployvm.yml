@@ -10,8 +10,8 @@
       password: "{{ snow_password }}"
       instance: "{{ snow_instance }}"
       state: present
-      table: sc_req_item
-      number: "RITM{{ snow_request.split('REQ')[1] }}"
+      table: u_chrisrequest
+      number: "{{ snow_request }}"
       data:
         work_notes: "Started ansible playbook"
         
@@ -50,8 +50,8 @@
       password: "{{ snow_password }}"
       instance: "{{ snow_instance }}"
       state: present
-      table: sc_req_item
-      number: "RITM{{ snow_request.split('REQ')[1] }}"
+      table: u_chrisrequest
+      number: "{{ snow_request }}"
       data:
         work_notes: "{{ debugoutput.msg }}" 
   
@@ -61,8 +61,8 @@
       password: "{{ snow_password }}"
       instance: "{{ snow_instance }}"
       state: present
-      table: sc_req_item
-      number: "RITM{{ snow_request.split('REQ')[1] }}"
+      table: u_chrisrequest
+      number: "{{ snow_request }}"
       data:
         work_notes: "Ansible playbook finished" 
         state: 3
