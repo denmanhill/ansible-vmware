@@ -28,5 +28,5 @@
     register: rp_facts
     
   - name: Loop with_dict
-    with_dict: "{{ rp_facts}}"
+    with_dict: "{{ rp_facts }}"
     debug: msg="{{ item.key }}"
