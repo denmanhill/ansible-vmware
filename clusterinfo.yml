@@ -1,0 +1,11 @@
+---
+- hosts: ESXiHosts[0]
+  - name: Gather cluster facts from given datacenter
+    vmware_cluster_facts:
+      hostname: '{{ vcenter_hostname }}'
+      username: '{{ vcenter_username }}'
+      password: '{{ vcenter_password }}'
+      datacenter: ha-datacenter
+      validate_certs: no
+    delegate_to: localhost
+    register: cluster_facts
