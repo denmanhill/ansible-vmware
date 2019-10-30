@@ -27,8 +27,8 @@
       validate_certs: false
     register: rp_facts
   
-  - debug: var=rp_facts 
+  - debug: var=rp_facts.resource_pool_facts
     
   - name: Loop with loop
-    loop: "{{ rp_facts }}"
+    loop: "{{ rp_facts.resource_pool_facts }}"
     debug: msg="{{ item.owner }}"
