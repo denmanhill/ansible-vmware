@@ -11,7 +11,7 @@
       validate_certs: false
     register: cluster_facts
   - debug:
-      msg: "Facts {{ cluster_facts }}"
+      msg: "Facts {{ cluster_facts | from_json }}"
   - name: Gather cluster facts from given datacenter
     vmware_resource_pool_facts:
       hostname: "{{ vmvcenter }}"
