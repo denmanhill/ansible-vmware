@@ -11,9 +11,8 @@
       validate_certs: false
     register: cluster_facts_json
 
-  - debug: var=cluster_facts_json
-  - set_fact: myvar="{{cluster_facts_json.stdout | from_json }}"
-  - debug: var=myvar
+  - debug: var=cluster_facts_json.clusters
+
   
   - name: Gather cluster facts from given datacenter
     vmware_resource_pool_facts:
