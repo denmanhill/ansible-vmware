@@ -12,6 +12,9 @@
     register: cluster_facts_json
 
   - debug: var=cluster_facts_json.clusters
+  - name: test loop
+    with_dict: "{{ cluster_facts_json['clusters'] }}"
+    - debug: msg="{{ item.value.drs_default_vm_behavior }}"
 
   
   - name: Gather cluster facts from given datacenter
