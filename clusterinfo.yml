@@ -14,8 +14,9 @@
   - debug: var=cluster_facts_json.clusters
   
   - name: test loop
-    debug: var=item
     with_dict: "{{ cluster_facts_json['clusters'] }}"
+    debug: var=item
+
 
   
   - name: Gather cluster facts from given datacenter
