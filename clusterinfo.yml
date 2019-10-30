@@ -3,10 +3,10 @@
   tasks:
   - name: Gather cluster facts from given datacenter
     vmware_cluster_facts:
-      hostname: '{{ vcenter_hostname }}'
-      username: '{{ vcenter_username }}'
-      password: '{{ vcenter_password }}'
-      datacenter: ha-datacenter
+      hostname: "{{ vmvcenter }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
+      datacenter: "{{ vmdatacenter }}"
       validate_certs: no
     delegate_to: localhost
     register: cluster_facts
