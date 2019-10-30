@@ -12,7 +12,7 @@
     register: cluster_facts_json
 
   - debug:
-      msg: "{{ cluster_facts_json.cluster | list }}"
+      msg: "{{ cluster_facts_json.clusters | list }}"
   - name: Get foo value.
     set_fact:
       clusters_value: "{{ cluster_facts_json.clusters | list }}"
