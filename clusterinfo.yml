@@ -13,9 +13,9 @@
 
   - debug:
       var: cluster_facts_json
-  - name: Print changed parameter
-    debug:
-      msg: "{{ cluster_facts_json.clusters}}" 
+  - name: Get foo value.
+      set_fact:
+        clusters_value: "{{ cluster_facts_json.clusters | list }}"
 
   - name: Gather cluster facts from given datacenter
     vmware_resource_pool_facts:
