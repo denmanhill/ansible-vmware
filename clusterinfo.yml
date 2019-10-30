@@ -15,7 +15,7 @@
   
   - name: test loop
     with_dict: "{{ cluster_facts_json['clusters'] }}"
-    debug: var=item
+    debug: var=item.key
 
 
   
