@@ -15,6 +15,5 @@
       hostname: "{{ vmvcenter }}"
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
-      datacenter: "{{ vmdatacenter }}"
       validate_certs: false
     register: rp_facts
