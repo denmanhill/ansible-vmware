@@ -13,6 +13,10 @@
 
   - debug:
       var: cluster_facts_json
+  - name: Print changed parameter
+    debug:
+      msg: "{{ cluster_facts_json.changed }}" 
+
   - name: Gather cluster facts from given datacenter
     vmware_resource_pool_facts:
       hostname: "{{ vmvcenter }}"
