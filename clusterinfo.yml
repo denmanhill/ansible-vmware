@@ -13,7 +13,7 @@
 
   - debug: var=cluster_facts_json.clusters
   
-  - name: Loop with_dict
+  - name: Loop with with_dict
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     debug: msg="{{ item.key }}"
 
@@ -27,6 +27,6 @@
       validate_certs: false
     register: rp_facts
     
-  - name: Loop with_dict
-    with_dict: "{{ rp_facts }}"
-    debug: msg="{{ item.key }}"
+  - name: Loop with loop
+    loop: "{{ rp_facts }}"
+    debug: msg="{{ item.owner }}"
