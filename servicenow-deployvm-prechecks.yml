@@ -10,7 +10,7 @@
       password: "{{ snow_password }}"
       instance: "{{ snow_instance }}"
       state: present
-      table: sc_request
+      table: u_chrisrequest
       number: "{{ snow_request }}"
       data:
         work_notes: "Sample CPU number"
