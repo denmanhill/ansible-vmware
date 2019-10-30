@@ -26,6 +26,8 @@
       password: "{{ VCC_PASSWORD }}"
       validate_certs: false
     register: rp_facts
+  
+  - debug: var=rp_facts 
     
   - name: Loop with loop
     loop: "{{ rp_facts }}"
