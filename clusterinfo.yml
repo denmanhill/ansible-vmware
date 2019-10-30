@@ -12,7 +12,7 @@
     register: cluster_facts_json
 
   - debug:
-      var: "{{ cluster_facts_json }}"
+      var: cluster_facts_json
   - name: Gather cluster facts from given datacenter
     vmware_resource_pool_facts:
       hostname: "{{ vmvcenter }}"
