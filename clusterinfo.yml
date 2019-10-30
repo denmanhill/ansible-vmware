@@ -10,7 +10,7 @@
       datacenter: "{{ vmdatacenter }}"
       validate_certs: false
     register: cluster_facts_json
-    set_fact: 
+  - set_fact: 
       cluster_facts: "{{ cluster_facts_json | from_json }}"
   - debug:
       msg: "{{ cluster_facts }}"
