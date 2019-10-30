@@ -1,5 +1,6 @@
 ---
 - hosts: ESXiHosts[0]
+  tasks:
   - name: Gather cluster facts from given datacenter
     vmware_cluster_facts:
       hostname: '{{ vcenter_hostname }}'
