@@ -15,9 +15,11 @@
     register: cluster_facts_json
   
   - name: Loop with with_dict
-    debug: msg={{ item.runtime_cpu_max_usage }}
+    debug: msg={{ item.enabled_drs }}
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     when: item.key == wantedcluster
+    loop_control:
+      label: "{{ item.enabled_drs }}"
     ignore_errors: yes
   
   - name: Grab resource pool facts
