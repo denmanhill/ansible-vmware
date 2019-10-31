@@ -14,6 +14,7 @@
     register: cluster_facts_json
 
   - debug: var=cluster_facts_json.clusters
+  - debug: var=wantedcluster
   
   - name: Loop with with_dict
     debug: var=item
