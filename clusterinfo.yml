@@ -16,6 +16,7 @@
   - name: Loop with with_dict
     debug: var: item
     with_dict: "{{ cluster_facts_json['clusters'] }}"
+    ignore_errors: yes
 
 
   
@@ -32,3 +33,4 @@
   - name: Loop with loop
     debug: var: item
     loop: "{{ rp_facts.resource_pool_facts }}"
+    ignore_errors: yes
