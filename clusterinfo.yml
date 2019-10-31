@@ -17,7 +17,7 @@
   - debug: var=cluster_facts_json
   
   - name: Loop with with_dict
-    debug: msg={{ item.value }}
+    debug: msg={{ item.value.enabled_drs }}
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     when: item.key == wantedcluster
     loop_control:
