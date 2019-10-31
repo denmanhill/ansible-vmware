@@ -31,7 +31,6 @@
   - debug: var=rp_facts.resource_pool_facts
     
   - name: Loop with loop
-    debug: msg={{ item.runtime_cpu_max_usage }}
     set_fact: 
       cpumaxusage: "{{ item.runtime_cpu_max_usage }}"
     loop: "{{ rp_facts.resource_pool_facts }}"
