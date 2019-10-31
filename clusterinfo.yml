@@ -19,6 +19,7 @@
   - name: Loop with with_dict
     debug: var=item
     with_dict: "{{ cluster_facts_json['clusters'] }}"
+    when: item == 'CLUSTER01'
     ignore_errors: yes
 
     
