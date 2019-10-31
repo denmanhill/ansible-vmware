@@ -30,6 +30,5 @@
     
   - name: Loop with loop
     debug: msg={{ item }}
-    debug: var=item
     loop: "{{ rp_facts.resource_pool_facts }}"
     ignore_errors: yes
