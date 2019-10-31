@@ -13,14 +13,16 @@
       validate_certs: false
     register: cluster_facts_json
 
-  #- debug: var=cluster_facts_json.clusters
-  #- debug: var=wantedcluster
+#- debug: var=cluster_facts_json.clusters
+#- debug: var=wantedcluster
   
   - name: Loop with with_dict
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     when: item.key == wantedcluster
     register: CLUSTER01
     ignore_errors: yes
+  
+  - debug: var=CLUSTER01
   
   - name: Grab resource pool facts
     vmware_resource_pool_facts:
