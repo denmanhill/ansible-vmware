@@ -17,11 +17,11 @@
   - debug: var=cluster_facts_json
   
   - name: Loop with with_dict
-    debug: msg={{ item.enabled_drs }}
+    debug: msg={{ item }}
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     when: item.key == wantedcluster
     loop_control:
-      label: "{{ item.enabled_drs }}"
+      label: "{{ item }}"
     ignore_errors: yes
   
   - name: Grab resource pool facts
