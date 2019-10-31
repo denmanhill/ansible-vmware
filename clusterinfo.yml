@@ -30,5 +30,5 @@
   - debug: var=rp_facts.resource_pool_facts
     
   - name: Loop with loop
-    debug: msg="{{ item.owner }}"
-    loop: "{{ (rp_facts | from_json).resource_pool_facts }}"
+    debug: msg="{{ (item | from_json).owner }}"
+    loop: "{{ rp_facts.resource_pool_facts }}"
