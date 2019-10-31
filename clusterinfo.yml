@@ -29,6 +29,6 @@
   - debug: var=rp_facts.resource_pool_facts
     
   - name: Loop with loop
-    debug: msg={{ item.stdout }}
+    debug: msg={{ item }}
     loop: "{{ rp_facts.resource_pool_facts }}"
     ignore_errors: yes
