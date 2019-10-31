@@ -12,9 +12,6 @@
       datacenter: "{{ vmdatacenter }}"
       validate_certs: false
     register: cluster_facts_json
-
-#- debug: var=cluster_facts_json.clusters
-#- debug: var=wantedcluster
   
   - name: Loop with with_dict
     with_dict: "{{ cluster_facts_json['clusters'] }}"
