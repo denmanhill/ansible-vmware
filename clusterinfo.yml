@@ -14,6 +14,8 @@
       validate_certs: false
     register: cluster_facts_json
   
+  - debug: var: cluster_facts_json
+  
   - name: Loop with with_dict
     debug: msg={{ item.enabled_drs }}
     with_dict: "{{ cluster_facts_json['clusters'] }}"
@@ -29,9 +31,7 @@
       password: "{{ VCC_PASSWORD }}"
       validate_certs: false
     register: rp_facts
-  
-  - debug: var=rp_facts.resource_pool_facts
-    
+
   - name: Loop with loop
     set_fact: 
       cpumaxusage: "{{ item.runtime_cpu_max_usage }}"
