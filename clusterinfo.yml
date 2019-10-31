@@ -17,6 +17,7 @@
     debug: var=item
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     ignore_errors: yes
+    no_log: True
     
   - name: Grab resource pool facts
     vmware_resource_pool_facts:
@@ -32,3 +33,4 @@
     debug: msg={{ item.runtime_cpu_max_usage }}
     loop: "{{ rp_facts.resource_pool_facts }}"
     ignore_errors: yes
+    no_log: True
