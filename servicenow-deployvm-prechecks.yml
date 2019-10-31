@@ -3,7 +3,7 @@
   gather_facts: no
   connection: local
   vars:
-    wantedcluster: CLUSTER01  
+    wantedcluster: "{{ vmcluster }}"
   tasks:
   - name: Grab cluster facts
     vmware_cluster_facts:
