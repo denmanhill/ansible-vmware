@@ -14,7 +14,7 @@
   - debug: var=cluster_facts_json.clusters
   
   - name: Loop with with_dict
-    debug: msg="{{ item.key | from_json }}"
+    debug: msg="{{ item.key }}"
     with_dict: "{{ cluster_facts_json['clusters'] }}"
 
 
