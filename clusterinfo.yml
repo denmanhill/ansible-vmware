@@ -14,6 +14,7 @@
     register: cluster_facts_json
   
   - name: Loop with with_dict
+    debug: msg={{ item.runtime_cpu_max_usage }}
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     when: item.key == wantedcluster
     ignore_errors: yes
