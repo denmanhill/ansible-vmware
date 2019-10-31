@@ -17,7 +17,8 @@
   - debug: var=cluster_facts_json
   
   - name: Loop with with_dict
-    debug: msg={{ item.value.enabled_drs }}
+    set_fact: 
+      drs: "{{ item.value.enabled_drs }}"
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     when: item.key == wantedcluster
     loop_control:
@@ -41,4 +42,6 @@
       label: "{{ item.runtime_cpu_max_usage }}"
     ignore_errors: yes
 
+  - debug: var=wantedcluster
+  - debug: var=drs
   - debug: var=cpumaxusage
