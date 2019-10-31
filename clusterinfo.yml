@@ -1,5 +1,7 @@
 ---
 - hosts: ESXiHosts[0]
+  vars:
+    wantedcluster: CLUSTER01
   connection: local
   tasks:
   - name: Grab cluster facts
