@@ -16,7 +16,6 @@
   - name: Loop with with_dict
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     when: item.key == wantedcluster
-    register: CLUSTER01
     ignore_errors: yes
   
   - debug: var=CLUSTER01
