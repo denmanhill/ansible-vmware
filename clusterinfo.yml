@@ -14,7 +14,7 @@
   - debug: var=cluster_facts_json.clusters
   
   - name: Loop with with_dict
-    debug: var= item
+    debug: var: item
     with_dict: "{{ cluster_facts_json['clusters'] }}"
 
 
@@ -30,5 +30,5 @@
   - debug: var=rp_facts.resource_pool_facts
     
   - name: Loop with loop
-    debug: var= item
+    debug: var: item
     loop: "{{ rp_facts.resource_pool_facts }}"
