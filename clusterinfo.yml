@@ -36,6 +36,7 @@
     set_fact: 
       cpumaxusage: "{{ item.runtime_cpu_max_usage }}"
     loop: "{{ rp_facts.resource_pool_facts }}"
+    when: item.owner == wantedcluster
     loop_control:
       label: "{{ item.runtime_cpu_max_usage }}"
     ignore_errors: yes
