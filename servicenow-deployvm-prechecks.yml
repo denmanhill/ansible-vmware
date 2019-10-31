@@ -3,7 +3,45 @@
   gather_facts: no
   connection: local
   vars:
+    wantedcluster: CLUSTER01  
   tasks:
+  - name: Grab cluster facts
+    vmware_cluster_facts:
+      hostname: "{{ vmvcenter }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
+      datacenter: "{{ vmdatacenter }}"
+      validate_certs: false
+    register: cluster_facts_json
+  
+  - name: Find cluster and grab specific values
+    set_fact: 
+      drsstatus: "{{ item.value.enabled_drs }}"
+      hastatus: "{{ item.value.enable_ha }}"
+    with_dict: "{{ cluster_facts_json['clusters'] }}"
+    when: item.key == wantedcluster
+    loop_control:
+      label: "{{ item }}"
+    ignore_errors: yes
+  
+  - name: Grab resource pool facts
+    vmware_resource_pool_facts:
+      hostname: "{{ vmvcenter }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
+      validate_certs: false
+    register: rp_facts
+
+  - name: Find cluster and grab specific values
+    set_fact: 
+      cpuusage: "{{ item.runtime_cpu_max_usage }}"
+      memusage: "{{item.runtime_memory_overall_usage }}"
+    loop: "{{ rp_facts.resource_pool_facts }}"
+    when: item.owner == wantedcluster
+    loop_control:
+      label: "{{ item.runtime_cpu_max_usage }}"
+    ignore_errors: yes  
+  
   - name: update servicenow request
     snow_record:
       username: "{{ snow_user }}"
@@ -14,6 +52,6 @@
       number: "{{ snow_request }}"
       data:
         work_notes: "Prechecks run"
-        u_available_cpu: "Lots CPU"
-        u_available_mem: "Lots MEM"
+        u_available_cpu: {{ cpuusage }}
+        u_available_mem: {{ memusage }}
     ignore_errors: yes
