@@ -52,6 +52,6 @@
       number: "{{ snow_request }}"
       data:
         work_notes: "Prechecks run"
-        u_available_cpu: {{ cpuusage }}
-        u_available_mem: {{ memusage }}
+        u_available_cpu: "{{ cpuusage }}"
+        u_available_mem: "{{ memusage }}"
     ignore_errors: yes
