@@ -18,8 +18,6 @@
     when: item.key == wantedcluster
     ignore_errors: yes
   
-  - debug: var=CLUSTER01
-  
   - name: Grab resource pool facts
     vmware_resource_pool_facts:
       hostname: "{{ vmvcenter }}"
