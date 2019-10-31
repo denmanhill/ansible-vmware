@@ -2,6 +2,7 @@
 - hosts: ESXiHosts[0]
   vars:
     wantedcluster: CLUSTER01
+    usedmemory: 0
   connection: local
   tasks:
   - name: Grab cluster facts
@@ -31,8 +32,11 @@
     
   - name: Loop with loop
     debug: msg={{ item.runtime_cpu_max_usage }}
+    set_fact: 
+      cpumaxusage: "{{ item.runtime_cpu_max_usage }}"
     loop: "{{ rp_facts.resource_pool_facts }}"
     loop_control:
       label: "{{ item.runtime_cpu_max_usage }}"
     ignore_errors: yes
 
+  - debug: var=cpumaxusage
