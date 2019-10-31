@@ -34,7 +34,7 @@
 
   - name: Find cluster and grab specific values
     set_fact: 
-      cpuusage: "{{ item.runtime_cpu_max_usage }}"
+      cpuusage: "{{ item.runtime_cpu_overall_usage }}"
       memusage: "{{item.runtime_memory_overall_usage }}"
     loop: "{{ rp_facts.resource_pool_facts }}"
     when: item.owner == wantedcluster
