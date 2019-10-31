@@ -14,7 +14,7 @@
       validate_certs: false
     register: cluster_facts_json
   
-  - debug: var: cluster_facts_json
+  - debug: var=cluster_facts_json
   
   - name: Loop with with_dict
     debug: msg={{ item.enabled_drs }}
