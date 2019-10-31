@@ -18,7 +18,8 @@
   
   - name: Loop with with_dict
     set_fact: 
-      drs: "{{ item.value.enabled_drs }}"
+      drsstatus: "{{ item.value.enabled_drs }}"
+      hastatus: "{{ item.value.enable_ha }}"
     with_dict: "{{ cluster_facts_json['clusters'] }}"
     when: item.key == wantedcluster
     loop_control:
@@ -35,7 +36,8 @@
 
   - name: Loop with loop
     set_fact: 
-      cpumaxusage: "{{ item.runtime_cpu_max_usage }}"
+      cpuusage: "{{ item.runtime_cpu_max_usage }}"
+      memusage: "{{item.runtime_memory_overall_usage }}"
     loop: "{{ rp_facts.resource_pool_facts }}"
     when: item.owner == wantedcluster
     loop_control:
@@ -43,5 +45,7 @@
     ignore_errors: yes
 
   - debug: var=wantedcluster
-  - debug: var=drs
-  - debug: var=cpumaxusage
+  - debug: var=drsstatus
+  - debug: var=hastatus  
+  - debug: var=cpuusage
+  - debug: var=memusage
