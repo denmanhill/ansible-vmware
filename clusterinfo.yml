@@ -28,7 +28,7 @@
     ignore_errors: yes
   
   - name: Grab resource pool facts
-    vmware_resource_pool_info:
+    vmware_resource_pool_info_custom:
       hostname: "{{ vmvcenter }}"
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
