@@ -6,7 +6,7 @@
     wantedcluster: "{{ vmcluster }}"
   tasks:
   - name: Grab cluster facts
-    vmware_cluster_facts:
+    vmware_cluster_info:
       hostname: "{{ vmvcenter }}"
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
@@ -25,7 +25,7 @@
     ignore_errors: yes
   
   - name: Grab resource pool facts
-    vmware_resource_pool_facts:
+    vmware_resource_pool_info:
       hostname: "{{ vmvcenter }}"
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
@@ -36,7 +36,7 @@
     set_fact: 
       cpuusage: "{{ item.runtime_cpu_overall_usage }}"
       memusage: "{{item.runtime_memory_overall_usage }}"
-    loop: "{{ rp_facts.resource_pool_facts }}"
+    loop: "{{ rp_facts.resource_pool_info }}"
     when: item.owner == wantedcluster
     loop_control:
       label: "{{ item.runtime_cpu_max_usage }}"
