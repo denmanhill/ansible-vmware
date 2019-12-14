@@ -1,5 +1,5 @@
 ---
-- hosts: VMs
+- hosts: ESXiHosts[0]
   connection: local
   vars:
   tasks:
