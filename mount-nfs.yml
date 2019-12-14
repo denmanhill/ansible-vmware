@@ -1,0 +1,15 @@
+---
+- hosts: ESXiHosts[0]
+  connection: local
+  vars:
+  tasks:
+  - name: Mount NFS Datastore
+    vmware_host_datastore :
+      hostname: "{{ esxi_hostname }}"
+      username: "{{ ESXi_USERNAME }}"
+      password: "{{ ESXi_PASSWORD }}"
+      nfs_path: 192.168.2.7:/RAIDPOOL/home/datastore
+      datastore_name: NFS01
+      datastore_type: nfs
+      state: present
+      validate_certs: false  
