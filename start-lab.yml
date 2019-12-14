@@ -8,7 +8,8 @@
       hostname: "{{ esxi_hostname }}"
       username: "{{ ESXi_USERNAME }}"
       password: "{{ ESXi_PASSWORD }}"
-      nfs_path: 192.168.2.7:/RAIDPOOL/home/datastore
+      nfs_server: 192.168.2.7
+      nfs_path: /RAIDPOOL/home/datastore
       datastore_name: NFS01
       datastore_type: nfs
       state: present
