@@ -50,6 +50,6 @@
       username: "{{ VCC_USERNAME }}"
       password: "{{ VCC_PASSWORD }}"
       datastore_name: NFS01
-      datastore_type: NFS
+      datastore_type: nfs
       state: absent
       validate_certs: false      
