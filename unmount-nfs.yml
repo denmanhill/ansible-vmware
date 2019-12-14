@@ -1,0 +1,14 @@
+---
+- hosts: VMs
+  connection: local
+  vars:
+  tasks:
+  - name: Dismount NFS Datastore
+    vmware_host_datastore :
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ VCC_USERNAME }}"
+      password: "{{ VCC_PASSWORD }}"
+      datastore_name: NFS01
+      datastore_type: NFS
+      state: absent
+      validate_certs: false      
