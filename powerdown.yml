@@ -22,4 +22,5 @@
       username: "{{ ESXi_USERNAME }}"
       password: "{{ ESXi_PASSWORD }}"
       state: shutdown-host
+      force: true
       validate_certs: false           
