@@ -21,5 +21,5 @@
       hostname: "{{ esxi_hostname }}"
       username: "{{ ESXi_USERNAME }}"
       password: "{{ ESXi_PASSWORD }}"
-      state: absent
+      state: shutdown-host
       validate_certs: false           
