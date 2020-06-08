@@ -1,17 +1,4 @@
 ---
-- hosts: BaseVMs
-  connection: local
-  vars:
-  tasks:
-  - name: Shutdown Nested VMs
-    vmware_guest_powerstate :
-      hostname: "{{ esxi_hostname }}"
-      username: "{{ ESXi_USERNAME }}"
-      password: "{{ ESXi_PASSWORD}}"
-      name: "{{ inventory_hostname }}"
-      state: shutdown-guest
-      validate_certs: false
-      
 - hosts: ESXiHosts[0]
   connection: local
   vars:
